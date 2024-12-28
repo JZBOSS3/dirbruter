@@ -7,6 +7,7 @@
 <h1 align="center"><b>You can now generate an HTML report</b></h1
 
 <h2 align="center">Installation</h2>
+
 ```
 git clone https://github.com/JZBOSS3/dirbruter
 cd dirbruter
