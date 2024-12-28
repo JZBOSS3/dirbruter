@@ -6,7 +6,7 @@ Brute Directories For a Wesbite Using Python
 
 Usage: python3 dirbruter.py -d example.com
 
-## You can now generate an HTML report
+<h1>You can now generate an HTML report</h1>
 
 # Installation
 ```
