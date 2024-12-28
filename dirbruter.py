@@ -87,7 +87,7 @@ def scan_domain(domain, directory_file):
             print(f"{Fore.RED}[!] {directory_file} not found{Style.RESET_ALL}")
 
 # Function to generate the HTML page
-def generate_html_page():
+def generate_html_page(domain):
     # HTML report template
     html_content = f"""
 <!DOCTYPE html>
@@ -134,44 +134,47 @@ def generate_html_page():
         .status-group li {{
             padding: 5px;
         }}
+        h3 {{
+            padding-left: 20px;
+        }}
     </style>
 </head>
 <body>
     <div class="container">
         <p style="font-size: .5rem; width: 50%; margin: 0 auto;" align="center">{html_ascii_title}</p>
         <div class="scan-results">
-            <div class="status-group" style="border-left: 5px solid green;">
-                <h3>200 OK</h3>
+            <div class="status-group">
+                <h3 style="border-left: 5px solid green;">200 OK</h3>
                 <ul>
                     {"".join([f"<li>{url}</li>" for url in s200])}
                 </ul>
             </div>
-            <div class="status-group" style="border-left: 5px solid blue;">
-                <h3>301 Moved Permanently</h3>
+            <div class="status-group">
+                <h3 style="border-left: 5px solid blue;">301 Moved Permanently</h3>
                 <ul>
                     {"".join([f"<li>{url}</li>" for url in s301])}
                 </ul>
             </div>
-            <div class="status-group" style="border-left: 5px solid orange;">
-                <h3>403 Forbidden</h3>
+            <div class="status-group">
+                <h3 style="border-left: 5px solid orange;">403 Forbidden</h3>
                 <ul>
                     {"".join([f"<li>{url}</li>" for url in s403])}
                 </ul>
             </div>
-            <div class="status-group" style="border-left: 5px solid red;">
-                <h3>404 Not Found</h3>
+            <div class="status-group">
+                <h3 style="border-left: 5px solid red;">404 Not Found</h3>
                 <ul>
                     {"".join([f"<li>{url}</li>" for url in s404])}
                 </ul>
             </div>
-            <div class="status-group" style="border-left: 5px solid yellow;">
-                <h3>405 Method Not Allowed</h3>
+            <div class="status-group">
+                <h3 style="border-left: 5px solid yellow;">405 Method Not Allowed</h3>
                 <ul>
                     {"".join([f"<li>{url}</li>" for url in s405])}
                 </ul>
             </div>
-            <div class="status-group" style="border-left: 5px solid purple;">
-                <h3>500 Internal Server Error</h3>
+            <div class="status-group">
+                <h3 style="border-left: 5px solid purple;">500 Internal Server Error</h3>
                 <ul>
                     {"".join([f"<li>{url}</li>" for url in s500])}
                 </ul>
@@ -183,19 +186,10 @@ def generate_html_page():
 """
 
     # Write HTML content to a file with utf-8 encoding
-    with open("scan_report.html", "w", encoding="utf-8") as file:
+    with open(f"{(domain.split('.')[0])}_scan_report.html", "w", encoding="utf-8") as file:
         file.write(html_content)
 
-    print(Fore.GREEN + "HTML Report has been generated: scan_report.html" + Style.RESET_ALL)
-
-
-def ask_to_generate():
-    answer = input('Do You Want To Generate an HTML Page Report(yes/no)? ')
-    if(answer == 'yes'):
-        generate_html_page()
-    else:
-        print(Fore.BLUE + "Thank you for using my tool!" + Style.RESET_ALL)
-        sys.exit()
+    print(Fore.GREEN + f"HTML Report has been generated: {(domain.split('.')[0])}_scan_report.html" + Style.RESET_ALL)
 
 # Main function to run the tool
 def run_tool():
@@ -236,19 +230,19 @@ def run_tool():
 
         if domain and not domains_file:
             scan_domain(domain, directories_file)
+            generate_html_page(domain.strip())
         elif not domain and domains_file:
             with open(domains_file, mode='r') as file:
                 for domain in file:
                     scan_domain(domain.strip(), directories_file)
+                    generate_html_page(domain.strip())
         else:
             print_help_menu()
-
-        ask_to_generate()
 
 if __name__ == "__main__":
     try:
         print_ascii()
         run_tool()
     except KeyboardInterrupt:
-        ask_to_generate()
+        generate_html_page()
         print(Fore.RED + "\nExiting..." + Style.RESET_ALL)
