@@ -233,9 +233,10 @@ def run_tool():
             generate_html_page(domain.strip())
         elif not domain and domains_file:
             with open(domains_file, mode='r') as file:
-                for domain in file:
-                    scan_domain(domain.strip(), directories_file)
-                    generate_html_page(domain.strip())
+                for domainn in file:
+                    domain = domainn.strip()
+                    scan_domain(domain, directories_file)
+                    generate_html_page(domain)
         else:
             print_help_menu()
 
@@ -244,5 +245,5 @@ if __name__ == "__main__":
         print_ascii()
         run_tool()
     except KeyboardInterrupt:
-        generate_html_page()
+        generate_html_page(domain)
         print(Fore.RED + "\nExiting..." + Style.RESET_ALL)
