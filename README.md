@@ -1,16 +1,30 @@
-# dirbruter
+# DirBruter
 Brute Directories For a Wesbite Using Python
 
-Usage: script.py [options] <url> -f <directories_file>
+![image](https://github.com/user-attachments/assets/7d13a2e6-0add-48a9-aada-4d045112e24e)
 
-Options:
 
--h Display Help Menu
+Usage: python3 dirbruter.py -d example.com
 
--f Specify File Containing List of Directories
+## You can now generate an HTML report
 
--v Verbose Mode
+# Installation
+```
+git clone https://github.com/JZBOSS3/dirbruter
+cd dirbruter
+python3 dirbruter.py -d example.com
+```
 
--q Quiet Mode
+# Flags:
+-d => Domain to brute force
 
--o Output To File
+-df => File containing Domains to brute force
+
+-f => File Containing directories
+
+-h => Print help menu
+
+![image](https://github.com/user-attachments/assets/7f5046d8-9f62-4f8d-ac56-19f45715526d)
+
+![image](https://github.com/user-attachments/assets/76c76726-d39c-4211-a4e6-554e09186281)
+
