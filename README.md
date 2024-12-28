@@ -1,10 +1,10 @@
 # DirBruter
-Brute Directories For a Wesbite Using Python
+
+### Brute Directories For a Wesbite Using Python
 
 ![image](https://github.com/user-attachments/assets/7d13a2e6-0add-48a9-aada-4d045112e24e)
 
 
-Usage: python3 dirbruter.py -d example.com
 
 <h1 align="center"><b>You can now generate an HTML report</b></h1
 
