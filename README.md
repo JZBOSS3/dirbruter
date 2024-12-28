@@ -4,7 +4,7 @@
 
 <p align="center"> <img src="https://github.com/user-attachments/assets/7d13a2e6-0add-48a9-aada-4d045112e24e"/> </p>
 
-<h1 align="center"><b>You can now generate an HTML report</b></h1
+<h1 align="center"><b>You can now generate an HTML report</b></h1>
 
 <h2 align="center">Installation</h2>
 
